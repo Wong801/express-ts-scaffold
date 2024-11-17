@@ -1,0 +1,12 @@
+model User {
+  userId      String   @id @default(dbgenerated("uuid_generate_v4()")) @map("user_id") @db.Uuid
+  username    String   @unique
+  phoneNumber String   @unique @map("phone_number")
+  email       String?  @unique
+  isVerified  Boolean  @default(false) @map("is_verified")
+  pin         String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @map("updated_at")
+
+  @@map("users")
+}
